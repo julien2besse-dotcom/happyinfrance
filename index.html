@@ -590,7 +590,7 @@
         <h2 class="section-title">Livrable 1 : Base de Données</h2>
         <p style="text-align: center; max-width: 700px; margin: 0 auto 50px; font-size: 1.1rem;">
             Un travail de qualification manuelle ("fourmi") pour nettoyer et enrichir les données.
-            <br><strong>Donnée vérifiée et corrigée : 405 contacts activables.</strong>
+            <br><strong>Donnée vérifiée et corrigée : 407 contacts activables (194 PME + 213 GC).</strong>
         </p>
         
         <div class="grid">
@@ -598,7 +598,7 @@
                 <div class="card-icon">🏭</div>
                 <h3>Segment PME / ETI</h3>
                 <p>Entreprises < 1000 employés.</p>
-                <div class="kpi-value" style="font-size: 3.5rem;">192</div>
+                <div class="kpi-value" style="font-size: 3.5rem;">194</div>
                 <p style="color: var(--text-light); font-weight: 600;">Contacts qualifiés</p>
                 <span class="stats-badge">📊 Liste vérifiée manuellement</span>
                 <p style="margin-top: 15px; font-size: 0.9rem;">Cible : RH Généralistes</p>
@@ -868,6 +868,7 @@
         </div>
     </div>
 
+    <script src="data.js"></script>
     <script>
         // --- DATA BASE DE MESSAGES --- 
         // Contenu exact provenant des livrables validés (html2.html + Script vidéo)
@@ -959,35 +960,7 @@
         });
 
         // --- DOWNLOAD FUNCTIONS ---
-        function generatePMEData() {
-            // Données exemple pour la liste PME (192 contacts)
-            const pmeData = [
-                ['Nom', 'Prénom', 'Entreprise', 'Poste', 'Email', 'Taille', 'Secteur', 'Ville'],
-                ['Dupont', 'Marie', 'TechSolutions Toulouse', 'DRH', 'marie.dupont@techsolutions.fr', '450', 'IT', 'Toulouse'],
-                ['Martin', 'Pierre', 'LogiPro31', 'Responsable RH', 'p.martin@logipro31.fr', '320', 'Logistique', 'Blagnac'],
-                ['Bernard', 'Sophie', 'InnovWeb', 'RH Généraliste', 'sophie.bernard@innovweb.fr', '180', 'Digital', 'Toulouse'],
-                ['Rousseau', 'Jean', 'AeroTech Services', 'DRH Adjoint', 'j.rousseau@aerotech.fr', '680', 'Aéronautique', 'Colomiers'],
-                ['Leroy', 'Camille', 'DataFrance', 'RH & Talents', 'camille.leroy@datafrance.fr', '290', 'Data', 'Toulouse'],
-                // Note: Dans la vraie base, vous auriez les 192 contacts réels
-                ['...', '...', '[187 autres contacts PME]', '...', '...', '...', '...', '...']
-            ];
-            return pmeData;
-        }
-
-        function generateGCData() {
-            // Données exemple pour la liste Grands Comptes (213 contacts)
-            const gcData = [
-                ['Nom', 'Prénom', 'Entreprise', 'Poste', 'Email', 'Taille', 'Secteur', 'Ville'],
-                ['Moreau', 'Laurent', 'Airbus', 'Manager Mobilité Internationale', 'laurent.moreau@airbus.com', '55000', 'Aéronautique', 'Toulouse'],
-                ['Petit', 'Isabelle', 'Orange', 'DRH Région Sud-Ouest', 'isabelle.petit@orange.fr', '137000', 'Télécoms', 'Toulouse'],
-                ['Dubois', 'Thomas', 'Thales', 'Responsable Expatriation', 'thomas.dubois@thalesgroup.com', '81000', 'Défense', 'Toulouse'],
-                ['Girard', 'Claire', 'Continental', 'HR International Manager', 'claire.girard@continental.fr', '25000', 'Automobile', 'Toulouse'],
-                ['Blanc', 'Nicolas', 'Safran', 'DRH Mobilité', 'nicolas.blanc@safrangroup.com', '92000', 'Aéronautique', 'Toulouse'],
-                // Note: Dans la vraie base, vous auriez les 213 contacts réels
-                ['...', '...', '[208 autres contacts GC]', '...', '...', '...', '...', '...']
-            ];
-            return gcData;
-        }
+        // Les données réelles sont chargées depuis data.js (pmeData et gcData)
 
         function arrayToCSV(data) {
             return data.map(row =>
@@ -1010,8 +983,7 @@
         }
 
         function downloadPMEList() {
-            const data = generatePMEData();
-            downloadCSV('Happy_in_France_Liste_PME_192_contacts.csv', data);
+            downloadCSV('Happy_in_France_Liste_PME_194_contacts.csv', pmeData);
 
             // Feedback visuel
             const btn = event.target;
@@ -1025,8 +997,7 @@
         }
 
         function downloadGCList() {
-            const data = generateGCData();
-            downloadCSV('Happy_in_France_Liste_Grands_Comptes_213_contacts.csv', data);
+            downloadCSV('Happy_in_France_Liste_Grands_Comptes_213_contacts.csv', gcData);
 
             // Feedback visuel
             const btn = event.target;
