@@ -767,54 +767,159 @@
         </div>
     </section>
 
-    <section id="livrables" class="container" style="background: white; border-radius: 30px; box-shadow: var(--shadow);">
-        <h2 class="section-title">Livrable 1 : Base de Données</h2>
-        <p style="text-align: center; max-width: 700px; margin: 0 auto 50px; font-size: 1.1rem;">
-            Un travail de qualification manuelle ("fourmi") pour nettoyer et enrichir les données.
-            <br><strong>Donnée vérifiée et corrigée : 407 contacts activables (194 PME + 213 GC).</strong>
-        </p>
-        
-        <div class="grid">
-            <div class="card">
-                <div class="card-icon">🏭</div>
-                <h3>Segment PME / ETI</h3>
-                <p>Entreprises < 1000 employés.</p>
-                <div class="kpi-value" style="font-size: 3.5rem;">194</div>
-                <p style="color: var(--text-light); font-weight: 600;">Contacts qualifiés</p>
-                <span class="stats-badge">📊 Liste vérifiée manuellement</span>
-                <p style="margin-top: 15px; font-size: 0.9rem;">Cible : RH Généralistes</p>
-                <hr style="margin: 20px 0; border: 0; border-top: 1px solid #eee;">
-                <p><strong>Angle d'attaque :</strong> Flexibilité, Financement "0€ à charge" (OPCO), Ancrage local Toulouse.</p>
-                <div style="text-align: center;">
-                    <button class="download-btn" onclick="downloadPMEList()">Télécharger la liste PME</button>
+    <section id="livrables" class="container" style="background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%); border-radius: 30px; box-shadow: var(--shadow); border: 1px solid #e2e8f0;">
+        <h2 class="section-title">Livrable 1 : Base de Données Qualifiée</h2>
+
+        <!-- Stats Hero -->
+        <div style="background: linear-gradient(135deg, var(--primary) 0%, #1e293b 100%); border-radius: 20px; padding: 40px; text-align: center; margin-bottom: 50px; box-shadow: 0 10px 30px rgba(15, 23, 42, 0.15);">
+            <div style="color: white; font-size: 1.1rem; margin-bottom: 20px; opacity: 0.9;">
+                Un travail de qualification manuelle méticuleux ("fourmi") pour nettoyer et enrichir les données
+            </div>
+            <div style="display: flex; justify-content: center; align-items: center; gap: 20px; flex-wrap: wrap;">
+                <div style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); padding: 20px 40px; border-radius: 15px; border: 1px solid rgba(255, 255, 255, 0.2);">
+                    <div style="font-size: 3rem; font-weight: 700; color: white; font-family: 'Playfair Display', serif;">407</div>
+                    <div style="color: rgba(255, 255, 255, 0.9); font-weight: 600; margin-top: 5px;">Contacts Activables</div>
+                </div>
+                <div style="color: white; font-size: 2rem; opacity: 0.5;">=</div>
+                <div style="background: rgba(59, 130, 246, 0.2); backdrop-filter: blur(10px); padding: 20px 40px; border-radius: 15px; border: 1px solid rgba(59, 130, 246, 0.3);">
+                    <div style="font-size: 2.5rem; font-weight: 700; color: #60a5fa; font-family: 'Playfair Display', serif;">194</div>
+                    <div style="color: white; font-weight: 600; margin-top: 5px;">PME / ETI</div>
+                </div>
+                <div style="color: white; font-size: 2rem; opacity: 0.5;">+</div>
+                <div style="background: rgba(16, 185, 129, 0.2); backdrop-filter: blur(10px); padding: 20px 40px; border-radius: 15px; border: 1px solid rgba(16, 185, 129, 0.3);">
+                    <div style="font-size: 2.5rem; font-weight: 700; color: #34d399; font-family: 'Playfair Display', serif;">213</div>
+                    <div style="color: white; font-weight: 600; margin-top: 5px;">Grands Comptes</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Segments Grid -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 30px; margin-bottom: 40px;">
+
+            <!-- PME Card -->
+            <div style="background: white; border-radius: 20px; padding: 40px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); border: 2px solid #e2e8f0; transition: all 0.3s; position: relative; overflow: hidden;">
+                <!-- Accent bar -->
+                <div style="position: absolute; top: 0; left: 0; right: 0; height: 6px; background: linear-gradient(135deg, #3b82f6, #60a5fa);"></div>
+
+                <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 25px;">
+                    <div style="width: 70px; height: 70px; background: linear-gradient(135deg, #eff6ff, #dbeafe); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 2.5rem;">🏭</div>
+                    <div>
+                        <h3 style="margin: 0; font-size: 1.5rem; color: var(--primary);">Segment PME / ETI</h3>
+                        <p style="margin: 5px 0 0 0; color: var(--text-light); font-size: 0.95rem;">Entreprises < 1000 employés</p>
+                    </div>
+                </div>
+
+                <div style="background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); padding: 25px; border-radius: 15px; margin-bottom: 25px; text-align: center;">
+                    <div style="font-size: 4rem; font-weight: 700; color: #3b82f6; font-family: 'Playfair Display', serif; line-height: 1;">194</div>
+                    <div style="color: #1e40af; font-weight: 600; font-size: 1.1rem; margin-top: 8px;">Contacts qualifiés</div>
+                    <div style="display: inline-block; background: white; padding: 8px 16px; border-radius: 20px; margin-top: 15px; font-size: 0.85rem; color: #3b82f6; font-weight: 600; border: 1px solid #3b82f6;">
+                        ✅ Liste vérifiée manuellement
+                    </div>
+                </div>
+
+                <div style="background: #f8fafc; padding: 20px; border-radius: 12px; margin-bottom: 20px;">
+                    <div style="font-weight: 700; color: var(--primary); margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
+                        <span style="font-size: 1.2rem;">🎯</span>
+                        <span>Cible</span>
+                    </div>
+                    <p style="margin: 0; color: var(--text-main); font-size: 0.95rem;">RH Généralistes & Responsables Formation</p>
+                </div>
+
+                <div style="background: #f8fafc; padding: 20px; border-radius: 12px; margin-bottom: 25px;">
+                    <div style="font-weight: 700; color: var(--primary); margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
+                        <span style="font-size: 1.2rem;">💡</span>
+                        <span>Arguments Clés</span>
+                    </div>
+                    <ul style="margin: 0; padding-left: 20px; color: var(--text-main); font-size: 0.95rem; line-height: 1.8;">
+                        <li><strong>Flexibilité</strong> : Accompagnement sur-mesure</li>
+                        <li><strong>0€ à charge</strong> : Financement OPCO intégral</li>
+                        <li><strong>Ancrage local</strong> : Réseau toulousain actif</li>
+                    </ul>
+                </div>
+
+                <button class="download-btn" onclick="downloadPMEList()" style="width: 100%; margin: 0; justify-content: center;">
+                    📥 Télécharger la liste PME
+                </button>
+            </div>
+
+            <!-- Grands Comptes Card -->
+            <div style="background: white; border-radius: 20px; padding: 40px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); border: 2px solid #e2e8f0; transition: all 0.3s; position: relative; overflow: hidden;">
+                <!-- Accent bar -->
+                <div style="position: absolute; top: 0; left: 0; right: 0; height: 6px; background: linear-gradient(135deg, #10b981, #34d399);"></div>
+
+                <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 25px;">
+                    <div style="width: 70px; height: 70px; background: linear-gradient(135deg, #f0fdf4, #dcfce7); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 2.5rem;">🏢</div>
+                    <div>
+                        <h3 style="margin: 0; font-size: 1.5rem; color: var(--primary);">Segment Grands Comptes</h3>
+                        <p style="margin: 5px 0 0 0; color: var(--text-light); font-size: 0.95rem;">Entreprises > 1000 employés</p>
+                    </div>
+                </div>
+
+                <div style="background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); padding: 25px; border-radius: 15px; margin-bottom: 25px; text-align: center;">
+                    <div style="font-size: 4rem; font-weight: 700; color: #10b981; font-family: 'Playfair Display', serif; line-height: 1;">213</div>
+                    <div style="color: #065f46; font-weight: 600; font-size: 1.1rem; margin-top: 8px;">Contacts qualifiés</div>
+                    <div style="display: inline-block; background: white; padding: 8px 16px; border-radius: 20px; margin-top: 15px; font-size: 0.85rem; color: #10b981; font-weight: 600; border: 1px solid #10b981;">
+                        ✅ Liste vérifiée manuellement
+                    </div>
+                </div>
+
+                <div style="background: #f8fafc; padding: 20px; border-radius: 12px; margin-bottom: 20px;">
+                    <div style="font-weight: 700; color: var(--primary); margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
+                        <span style="font-size: 1.2rem;">🎯</span>
+                        <span>Cible</span>
+                    </div>
+                    <p style="margin: 0; color: var(--text-main); font-size: 0.95rem;">Mobilité Internationale & DRH Groupe</p>
+                </div>
+
+                <div style="background: #f8fafc; padding: 20px; border-radius: 12px; margin-bottom: 25px;">
+                    <div style="font-weight: 700; color: var(--primary); margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
+                        <span style="font-size: 1.2rem;">💡</span>
+                        <span>Arguments Clés</span>
+                    </div>
+                    <ul style="margin: 0; padding-left: 20px; color: var(--text-main); font-size: 0.95rem; line-height: 1.8;">
+                        <li><strong>Scalabilité</strong> : Gestion volumes importants</li>
+                        <li><strong>Certification Qualiopi</strong> : Process auditable</li>
+                        <li><strong>ROI mesurable</strong> : Reporting RH structuré</li>
+                    </ul>
+                </div>
+
+                <button class="download-btn" onclick="downloadGCList()" style="width: 100%; margin: 0; justify-content: center;">
+                    📥 Télécharger la liste Grands Comptes
+                </button>
+            </div>
+        </div>
+
+        <!-- Qualité de la donnée -->
+        <div style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); border-radius: 20px; padding: 40px; border: 2px solid #fbbf24;">
+            <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 25px;">
+                <div style="width: 70px; height: 70px; background: white; border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; box-shadow: 0 4px 15px rgba(251, 191, 36, 0.3);">💎</div>
+                <div>
+                    <h3 style="margin: 0; font-size: 1.8rem; color: #78350f;">Garantie Qualité de la Donnée</h3>
+                    <p style="margin: 5px 0 0 0; color: #92400e; font-size: 1rem;">Chaque contact a été vérifié et validé manuellement</p>
                 </div>
             </div>
 
-            <div class="card">
-                <div class="card-icon">🏢</div>
-                <h3>Segment Grands Comptes</h3>
-                <p>Entreprises > 1000 employés.</p>
-                <div class="kpi-value" style="font-size: 3.5rem;">213</div>
-                <p style="color: var(--text-light); font-weight: 600;">Contacts qualifiés</p>
-                <span class="stats-badge">📊 Liste vérifiée manuellement</span>
-                <p style="margin-top: 15px; font-size: 0.9rem;">Cible : Mobilité Internationale / DRH</p>
-                <hr style="margin: 20px 0; border: 0; border-top: 1px solid #eee;">
-                <p><strong>Angle d'attaque :</strong> Scalabilité, Certification Qualiopi, ROI, Reporting structuré.</p>
-                <div style="text-align: center;">
-                    <button class="download-btn" onclick="downloadGCList()">Télécharger la liste GC</button>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+                <div style="background: white; padding: 20px; border-radius: 12px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);">
+                    <div style="font-size: 1.8rem; margin-bottom: 10px;">✉️</div>
+                    <div style="font-weight: 700; color: var(--primary); margin-bottom: 5px;">Email professionnel vérifié</div>
+                    <div style="font-size: 0.85rem; color: var(--text-light);">Validation syntaxe + domaine</div>
                 </div>
-            </div>
-
-            <div class="card">
-                <div class="card-icon">💎</div>
-                <h3>Qualité de la Donnée</h3>
-                <p>Chaque contact a été vérifié manuellement.</p>
-                <ul class="about-list" style="list-style: none; margin-top: 20px;">
-                    <li>Email professionnel vérifié</li>
-                    <li>Profil LinkedIn actif validé</li>
-                    <li>Secteur d'activité précis</li>
-                    <li>Taille salariale à jour (Correction -25% d'erreurs)</li>
-                </ul>
+                <div style="background: white; padding: 20px; border-radius: 12px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);">
+                    <div style="font-size: 1.8rem; margin-bottom: 10px;">💼</div>
+                    <div style="font-weight: 700; color: var(--primary); margin-bottom: 5px;">Profil LinkedIn actif validé</div>
+                    <div style="font-size: 0.85rem; color: var(--text-light);">Vérification manuelle des profils</div>
+                </div>
+                <div style="background: white; padding: 20px; border-radius: 12px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);">
+                    <div style="font-size: 1.8rem; margin-bottom: 10px;">🏭</div>
+                    <div style="font-weight: 700; color: var(--primary); margin-bottom: 5px;">Secteur d'activité précis</div>
+                    <div style="font-size: 0.85rem; color: var(--text-light);">Classification détaillée</div>
+                </div>
+                <div style="background: white; padding: 20px; border-radius: 12px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);">
+                    <div style="font-size: 1.8rem; margin-bottom: 10px;">📊</div>
+                    <div style="font-weight: 700; color: var(--primary); margin-bottom: 5px;">Taille salariale à jour</div>
+                    <div style="font-size: 0.85rem; color: var(--text-light);">Correction de 25% d'erreurs détectées</div>
+                </div>
             </div>
         </div>
     </section>
