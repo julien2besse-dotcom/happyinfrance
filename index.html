@@ -1230,18 +1230,12 @@
 
             <!-- Lead Selector -->
             <div style="background: #f8fafc; padding: 20px; border-radius: 12px; margin-bottom: 20px; border: 2px solid #e2e8f0;">
-                <label style="display: block; font-weight: 600; margin-bottom: 12px; color: var(--primary);">
+                <label style="display: block; font-weight: 600; margin-bottom: 16px; color: var(--primary);">
                     Personnaliser avec un lead de l'échantillon :
                 </label>
-                <select id="lead-selector" onchange="updateMessageVariables()" style="width: 100%; padding: 12px; border-radius: 8px; border: 2px solid #cbd5e1; font-size: 1rem; background: white; cursor: pointer; font-family: 'Inter', sans-serif; color: var(--primary); font-weight: 500;">
-                    <option value="">-- Message générique (avec variables) --</option>
-                    <option value="0">👔 GC - Julie Moissinac (Nutrition & Santé)</option>
-                    <option value="1">👔 GC - Jessica Ejnes (Ansamble)</option>
-                    <option value="2">👔 GC - Tiphany Santolaria (Clinique Pasteur)</option>
-                    <option value="3">PME - Magali Tayot (Écoles Vidal)</option>
-                    <option value="4">PME - Johanna Vedrine (CDC Habitat)</option>
-                    <option value="5">PME - Philippine Alauzet (CERFACS)</option>
-                </select>
+                <div id="lead-cards-container" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;">
+                    <!-- Les cartes seront générées dynamiquement -->
+                </div>
             </div>
 
             <div class="message-box">
@@ -1281,19 +1275,119 @@
         };
 
         // --- LOGIQUE ---
+        let currentCampaign = 'gg'; // Default: Grands Comptes
+        let currentMessageId = '';
+        let selectedLeadIndex = ''; // Track selected lead
+
         function switchTab(camp) {
+            // Save current campaign
+            currentCampaign = camp;
+
             // UI Buttons
             document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
             event.target.classList.add('active');
-            
+
             // Hide all flows
             document.querySelectorAll('.campaign-view').forEach(f => f.classList.remove('active'));
-            
+
             // Show selected flow
             document.getElementById(camp + '-flow').classList.add('active');
         }
 
-        let currentMessageId = '';
+        function renderLeadCards() {
+            const container = document.getElementById('lead-cards-container');
+
+            // Filter leads based on current campaign
+            const filteredLeads = topLeadsData.filter(lead =>
+                lead.type === currentCampaign
+            );
+
+            // Clear container
+            container.innerHTML = '';
+
+            // Add profile cards
+            filteredLeads.forEach((lead, index) => {
+                const actualIndex = topLeadsData.indexOf(lead);
+                const isSelected = selectedLeadIndex === actualIndex.toString();
+
+                const card = document.createElement('div');
+                card.onclick = () => selectLead(actualIndex.toString());
+                card.style.cssText = `
+                    background: white;
+                    border: 2px solid ${isSelected ? 'var(--secondary)' : '#e2e8f0'};
+                    border-radius: 10px;
+                    padding: 12px;
+                    cursor: pointer;
+                    transition: all 0.2s;
+                    text-align: center;
+                    ${isSelected ? 'box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);' : ''}
+                `;
+                card.onmouseover = function() {
+                    if(!isSelected) this.style.borderColor = '#cbd5e1';
+                };
+                card.onmouseout = function() {
+                    if(!isSelected) this.style.borderColor = '#e2e8f0';
+                };
+
+                card.innerHTML = `
+                    <img src="${lead.image}"
+                         alt="${lead.name}"
+                         style="width: 60px; height: 60px; border-radius: 50%; object-fit: cover; margin-bottom: 8px;">
+                    <div style="font-size: 0.85rem; font-weight: 600; color: var(--primary); margin-bottom: 2px;">
+                        ${lead.firstName}
+                    </div>
+                    <div style="font-size: 0.7rem; color: var(--text-light);">
+                        ${lead.company}
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+
+            // Add generic message card
+            const isGenericSelected = selectedLeadIndex === '';
+            const genericCard = document.createElement('div');
+            genericCard.onclick = () => selectLead('');
+            genericCard.style.cssText = `
+                background: ${isGenericSelected ? 'linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%)' : 'white'};
+                border: 2px solid ${isGenericSelected ? 'var(--primary)' : '#e2e8f0'};
+                border-radius: 10px;
+                padding: 12px;
+                cursor: pointer;
+                transition: all 0.2s;
+                text-align: center;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                ${isGenericSelected ? 'box-shadow: 0 4px 12px rgba(15, 23, 42, 0.15);' : ''}
+            `;
+            genericCard.onmouseover = function() {
+                if(!isGenericSelected) this.style.borderColor = '#cbd5e1';
+            };
+            genericCard.onmouseout = function() {
+                if(!isGenericSelected) this.style.borderColor = '#e2e8f0';
+            };
+
+            genericCard.innerHTML = `
+                <svg style="width: 40px; height: 40px; margin-bottom: 12px; color: var(--primary);" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M5 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+                    <path d="m2.165 15.803.02-.004c1.83-.363 2.948-.842 3.468-1.105A9.06 9.06 0 0 0 8 15c4.418 0 8-3.134 8-7s-3.582-7-8-7-8 3.134-8 7c0 1.76.743 3.37 1.97 4.6a10.437 10.437 0 0 1-.524 2.318l-.003.011a10.722 10.722 0 0 1-.244.637c-.079.186.074.394.273.362a21.673 21.673 0 0 0 .693-.125zm.8-3.108a1 1 0 0 0-.287-.801C1.618 10.83 1 9.468 1 8c0-3.192 3.004-6 7-6s7 2.808 7 6c0 3.193-3.004 6-7 6a8.06 8.06 0 0 1-2.088-.272 1 1 0 0 0-.711.074c-.387.196-1.24.57-2.634.893a10.97 10.97 0 0 0 .398-2z"/>
+                </svg>
+                <div style="font-size: 0.85rem; font-weight: 600; color: var(--primary); margin-bottom: 2px;">
+                    Message
+                </div>
+                <div style="font-size: 0.7rem; color: var(--text-light);">
+                    générique
+                </div>
+            `;
+            container.appendChild(genericCard);
+        }
+
+        function selectLead(leadIndex) {
+            selectedLeadIndex = leadIndex;
+            renderLeadCards();
+            updateMessageVariables();
+        }
 
         function openModal(id) {
             const data = messages[id];
@@ -1309,23 +1403,23 @@
             document.getElementById('modal-desc').innerText = data.desc;
             document.getElementById('modal-text').innerText = data.text;
 
-            // Reset selector
-            document.getElementById('lead-selector').value = '';
+            // Reset and render lead cards
+            selectedLeadIndex = '';
+            renderLeadCards();
 
             const modal = document.getElementById('modal');
             modal.style.display = 'flex';
         }
 
         function updateMessageVariables() {
-            const leadIndex = document.getElementById('lead-selector').value;
             const data = messages[currentMessageId];
             if(!data) return;
 
             let messageText = data.text;
 
             // If a lead is selected, replace variables
-            if(leadIndex !== '') {
-                const lead = topLeadsData[parseInt(leadIndex)];
+            if(selectedLeadIndex !== '') {
+                const lead = topLeadsData[parseInt(selectedLeadIndex)];
 
                 messageText = messageText
                     .replace(/\{\{first_name\}\}/g, lead.firstName)
