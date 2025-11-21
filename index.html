@@ -1382,9 +1382,17 @@
         function renderLeadCards() {
             const container = document.getElementById('lead-cards-container');
 
-            // Filter leads based on current campaign
+            // Determine campaign type from current message ID
+            let campaignType = 'gc'; // default
+            if (currentMessageId.startsWith('pme-')) {
+                campaignType = 'pme';
+            } else if (currentMessageId.startsWith('gg-')) {
+                campaignType = 'gc'; // gg messages are for grands comptes
+            }
+
+            // Filter leads based on campaign type
             const filteredLeads = topLeadsData.filter(lead =>
-                lead.type === currentCampaign
+                lead.type === campaignType
             );
 
             // Clear container
