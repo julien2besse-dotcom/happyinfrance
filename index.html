@@ -639,10 +639,10 @@
 
         /* --- FOOTER --- */
         footer {
-            background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+            background: #0f172a;
+            color: #94a3b8;
             padding: 60px 40px 40px;
             margin-top: 80px;
-            border-top: 1px solid #e2e8f0;
         }
 
         .footer-content {
@@ -653,52 +653,42 @@
         .footer-top {
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            padding-bottom: 40px;
-            border-bottom: 2px solid #e2e8f0;
+            justify-content: center;
+            padding-bottom: 30px;
+            border-bottom: 1px solid rgba(148, 163, 184, 0.2);
             margin-bottom: 40px;
-            gap: 40px;
+            gap: 20px;
             flex-wrap: wrap;
         }
 
         .footer-logos {
             display: flex;
             align-items: center;
-            gap: 30px;
+            gap: 20px;
         }
 
         .footer-logo-item {
-            height: 60px;
+            height: 40px;
             object-fit: contain;
-            filter: grayscale(0%);
-            transition: transform 0.3s;
+            filter: brightness(0) invert(1);
+            opacity: 0.9;
+            transition: opacity 0.3s;
         }
 
         .footer-logo-item:hover {
-            transform: scale(1.05);
+            opacity: 1;
         }
 
         .footer-divider {
-            width: 2px;
-            height: 60px;
-            background: linear-gradient(180deg, transparent, #cbd5e1, transparent);
-        }
-
-        .footer-collaboration {
-            text-align: right;
-        }
-
-        .footer-collaboration h3 {
-            font-size: 1.1rem;
-            color: var(--primary);
-            margin: 0 0 5px 0;
+            font-size: 1.2rem;
+            color: #94a3b8;
             font-weight: 700;
         }
 
-        .footer-collaboration p {
-            font-size: 0.9rem;
-            color: var(--text-light);
-            margin: 0;
+        .footer-collaboration {
+            text-align: center;
+            font-size: 0.85rem;
+            color: #94a3b8;
         }
 
         .footer-grid {
@@ -712,27 +702,27 @@
             font-size: 0.85rem;
             text-transform: uppercase;
             letter-spacing: 1px;
-            color: var(--primary);
+            color: white;
             margin-bottom: 15px;
             font-weight: 700;
         }
 
         .footer-section p {
-            color: var(--text-light);
+            color: #94a3b8;
             font-size: 0.95rem;
             line-height: 1.8;
             margin: 8px 0;
         }
 
         .footer-section a {
-            color: var(--text-light);
+            color: #94a3b8;
             text-decoration: none;
             transition: color 0.3s;
             display: inline-block;
         }
 
         .footer-section a:hover {
-            color: var(--secondary);
+            color: white;
         }
 
         .footer-contact-item {
@@ -745,14 +735,14 @@
         .footer-contact-item svg {
             width: 18px;
             height: 18px;
-            color: var(--secondary);
+            color: #60a5fa;
             flex-shrink: 0;
             margin-top: 2px;
         }
 
         .footer-bottom {
             padding-top: 30px;
-            border-top: 1px solid #e2e8f0;
+            border-top: 1px solid rgba(148, 163, 184, 0.2);
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -773,17 +763,18 @@
         }
 
         .footer-team-badge {
-            background: linear-gradient(135deg, #eff6ff 0%, #e0e7ff 100%);
-            color: var(--secondary);
+            background: rgba(96, 165, 250, 0.15);
+            color: #60a5fa;
             padding: 4px 12px;
             border-radius: 20px;
             font-size: 0.8rem;
             font-weight: 600;
+            border: 1px solid rgba(96, 165, 250, 0.3);
         }
 
         .footer-copyright {
             font-size: 0.85rem;
-            color: var(--text-light);
+            color: #94a3b8;
         }
 
         @media (max-width: 992px) {
@@ -1353,14 +1344,13 @@
                     <img src="https://happyinfrance.fr/wp-content/uploads/2024/06/cropped-cropped-Logo-LinkedIn-1.png"
                          alt="Happy in France"
                          class="footer-logo-item">
-                    <div class="footer-divider"></div>
+                    <span class="footer-divider">×</span>
                     <img src="https://tsm-education.fr/themes/custom/tsm/logo.svg"
                          alt="TSM Education"
                          class="footer-logo-item">
                 </div>
                 <div class="footer-collaboration">
-                    <h3>Projet de Consulting</h3>
-                    <p>Master 1 Strategic Management</p>
+                    Projet de Consulting - Master 1 Strategic Management
                 </div>
             </div>
 
