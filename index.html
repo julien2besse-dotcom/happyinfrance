@@ -1274,6 +1274,91 @@
             'gg-em-4': { title: 'Email 4', tag: 'Email', desc: 'Business Case.', text: "Objet: ROI mesurable\n\nCoût d'inaction : 30% de turnover prématuré.\n\nROI avec nous : Intégration 2x plus rapide, Rétention +40%.\n\nRépondez 'OUI' pour recevoir nos cas clients grands comptes (Airbus, Orange, etc.)." }
         };
 
+        // --- TOP LEADS DATA (UPDATED WITH NEW PROFILES & PHOTOS HD) ---
+        const topLeadsData = [
+            // --- GRANDS COMPTES (GC) ---
+            {
+                type: 'gc',
+                name: 'Julie Moissinac',
+                firstName: 'Julie',
+                image: 'https://media.licdn.com/dms/image/v2/D4E03AQHMsi7B3Rm04g/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1727433551684?e=1765411200&v=beta&t=egRc-nCIZeka5QUdFLZhBc5R1bD9NJRTeQcCcn-xLaw',
+                title: 'Head of Human Resources for Opérations - Social Dialogue Manager',
+                company: 'Nutrition & Santé',
+                employees: '1,100',
+                industry: 'Food Production',
+                city: 'Toulouse',
+                email: 'jcondamine@ns-group.com',
+                linkedin: 'https://www.linkedin.com/in/julie-condamine-moissinac-8a6439110'
+            },
+            {
+                type: 'gc',
+                name: 'Jessica Ejnes',
+                firstName: 'Jessica',
+                image: 'https://media.licdn.com/dms/image/v2/D4E03AQE_ogCRa2Hyrg/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1722926606072?e=1765411200&v=beta&t=Kgrub8_Xp-myRIL6KEIsgo-rlLil2YrJMD4ajTuw-5Q',
+                title: 'Human Resources Manager',
+                company: 'Ansamble',
+                employees: '1,100',
+                industry: 'Healthcare',
+                city: 'Toulouse',
+                email: 'jessica.ejnes@ansamble.fr',
+                linkedin: 'https://www.linkedin.com/in/jessica-ejnes'
+            },
+            {
+                type: 'gc',
+                name: 'Tiphany Santolaria',
+                firstName: 'Tiphany',
+                image: 'https://media.licdn.com/dms/image/v2/C4D03AQEhSP7dEaA1sQ/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1612262578294?e=1765411200&v=beta&t=xJ9fgX4YWo4Fl3F51IK14pLt-hDw-SsVWJE5S5bWETU',
+                title: 'Human Resources Manager',
+                company: 'Clinique Pasteur',
+                employees: '1,200',
+                industry: 'Healthcare',
+                city: 'Toulouse',
+                email: 'tsantolaria@clinique-pasteur.com',
+                linkedin: 'https://www.linkedin.com/in/tiphany-santolaria-3669bb4a'
+            },
+
+            // --- PME ---
+            {
+                type: 'pme',
+                name: 'Magali Tayot',
+                firstName: 'Magali',
+                image: 'https://media.licdn.com/dms/image/v2/C4E03AQG0pn9w8sK5gg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1640007161895?e=1765411200&v=beta&t=DRNSxyqgoSo72bOa8P1-CEQkElVg8WaJkEZMvW5KrqA',
+                title: 'HR Manager',
+                company: 'Écoles Vidal',
+                employees: '210',
+                industry: 'Higher Education',
+                city: 'Toulouse',
+                email: 'magali.tayot@gieinterecole.fr',
+                linkedin: 'https://www.linkedin.com/in/magali-tayot-63983872/'
+            },
+            {
+                type: 'pme',
+                name: 'Johanna Vedrine',
+                firstName: 'Johanna',
+                image: 'https://media.licdn.com/dms/image/v2/D4E03AQH_FXsmRANbKA/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1696573705448?e=1765411200&v=beta&t=LGUopFD9vPNRkGoS3ngKcl473FjZbZpMz2wF9nCiJlo',
+                title: 'Human Resources Manager',
+                company: 'CDC Habitat',
+                employees: '170',
+                industry: 'Real Estate',
+                city: 'Toulouse',
+                email: 'johanna.vedrine@cdc-habitat.fr',
+                linkedin: 'https://www.linkedin.com/in/johanna-vedrine-59b76557/'
+            },
+            {
+                type: 'pme',
+                name: 'Philippine Alauzet',
+                firstName: 'Philippine',
+                image: 'https://media.licdn.com/dms/image/v2/D4E03AQFGl2PBFlUOMw/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1695367105602?e=1765411200&v=beta&t=4G7tqP772bXt1GTKiUCuVYzokdMfVtdB90K-BOkkFKI',
+                title: 'Human Resources Manager',
+                company: 'CERFACS',
+                employees: '160',
+                industry: 'Research',
+                city: 'Toulouse',
+                email: 'alauzet@cerfacs.fr',
+                linkedin: 'https://www.linkedin.com/in/philippine-alauzet/'
+            }
+        ];
+
         // --- LOGIQUE ---
         let currentCampaign = 'gg'; // Default: Grands Comptes
         let currentMessageId = '';
@@ -1461,91 +1546,6 @@
         document.addEventListener('keydown', function(event) {
             if (event.key === 'Escape') closeModal();
         });
-
-        // --- TOP LEADS DATA (UPDATED WITH NEW PROFILES & PHOTOS HD) ---
-        const topLeadsData = [
-            // --- GRANDS COMPTES (GC) ---
-            {
-                type: 'gc',
-                name: 'Julie Moissinac',
-                firstName: 'Julie',
-                image: 'https://media.licdn.com/dms/image/v2/D4E03AQHMsi7B3Rm04g/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1727433551684?e=1765411200&v=beta&t=egRc-nCIZeka5QUdFLZhBc5R1bD9NJRTeQcCcn-xLaw',
-                title: 'Head of Human Resources for Opérations - Social Dialogue Manager',
-                company: 'Nutrition & Santé',
-                employees: '1,100',
-                industry: 'Food Production',
-                city: 'Toulouse',
-                email: 'jcondamine@ns-group.com',
-                linkedin: 'https://www.linkedin.com/in/julie-condamine-moissinac-8a6439110'
-            },
-            {
-                type: 'gc',
-                name: 'Jessica Ejnes',
-                firstName: 'Jessica',
-                image: 'https://media.licdn.com/dms/image/v2/D4E03AQE_ogCRa2Hyrg/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1722926606072?e=1765411200&v=beta&t=Kgrub8_Xp-myRIL6KEIsgo-rlLil2YrJMD4ajTuw-5Q',
-                title: 'Human Resources Manager',
-                company: 'Ansamble',
-                employees: '1,100',
-                industry: 'Healthcare',
-                city: 'Toulouse',
-                email: 'jessica.ejnes@ansamble.fr',
-                linkedin: 'https://www.linkedin.com/in/jessica-ejnes'
-            },
-            {
-                type: 'gc',
-                name: 'Tiphany Santolaria',
-                firstName: 'Tiphany',
-                image: 'https://media.licdn.com/dms/image/v2/C4D03AQEhSP7dEaA1sQ/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1612262578294?e=1765411200&v=beta&t=xJ9fgX4YWo4Fl3F51IK14pLt-hDw-SsVWJE5S5bWETU',
-                title: 'Human Resources Manager',
-                company: 'Clinique Pasteur',
-                employees: '1,200',
-                industry: 'Healthcare',
-                city: 'Toulouse',
-                email: 'tsantolaria@clinique-pasteur.com',
-                linkedin: 'https://www.linkedin.com/in/tiphany-santolaria-3669bb4a'
-            },
-
-            // --- PME ---
-            {
-                type: 'pme',
-                name: 'Magali Tayot',
-                firstName: 'Magali',
-                image: 'https://media.licdn.com/dms/image/v2/C4E03AQG0pn9w8sK5gg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1640007161895?e=1765411200&v=beta&t=DRNSxyqgoSo72bOa8P1-CEQkElVg8WaJkEZMvW5KrqA',
-                title: 'HR Manager',
-                company: 'Écoles Vidal',
-                employees: '210',
-                industry: 'Higher Education',
-                city: 'Toulouse',
-                email: 'magali.tayot@gieinterecole.fr',
-                linkedin: 'https://www.linkedin.com/in/magali-tayot-63983872/'
-            },
-            {
-                type: 'pme',
-                name: 'Johanna Vedrine',
-                firstName: 'Johanna',
-                image: 'https://media.licdn.com/dms/image/v2/D4E03AQH_FXsmRANbKA/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1696573705448?e=1765411200&v=beta&t=LGUopFD9vPNRkGoS3ngKcl473FjZbZpMz2wF9nCiJlo',
-                title: 'Human Resources Manager',
-                company: 'CDC Habitat',
-                employees: '170',
-                industry: 'Real Estate',
-                city: 'Toulouse',
-                email: 'johanna.vedrine@cdc-habitat.fr',
-                linkedin: 'https://www.linkedin.com/in/johanna-vedrine-59b76557/'
-            },
-            {
-                type: 'pme',
-                name: 'Philippine Alauzet',
-                firstName: 'Philippine',
-                image: 'https://media.licdn.com/dms/image/v2/D4E03AQFGl2PBFlUOMw/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1695367105602?e=1765411200&v=beta&t=4G7tqP772bXt1GTKiUCuVYzokdMfVtdB90K-BOkkFKI',
-                title: 'Human Resources Manager',
-                company: 'CERFACS',
-                employees: '160',
-                industry: 'Research',
-                city: 'Toulouse',
-                email: 'alauzet@cerfacs.fr',
-                linkedin: 'https://www.linkedin.com/in/philippine-alauzet/'
-            }
-        ];
 
         // --- TOP LEADS DISPLAY FUNCTION (UPDATED) ---
         function displayTopLeads() {
